@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Client as Styletron } from 'styletron-engine-atomic';
+import { Provider as StyletronProvider } from 'styletron-react';
+import { DarkTheme, BaseProvider } from 'baseui';
+
+import Numpad from './components/Numpad/Numpad';
+import Display from './components/Display/Display';
+
+import './App.scss';
+
+const engine = new Styletron();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <StyletronProvider value={engine}>
+        <BaseProvider theme={DarkTheme}>
+          <div className="App">
+            <header className="App-header">
+              <Display />
+              <Numpad />
+            </header>
+          </div>
+        </BaseProvider>
+      </StyletronProvider>
+    </BrowserRouter>
   );
 }
 

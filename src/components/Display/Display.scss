@@ -1,0 +1,8 @@
+.display {
+  width: 60%;
+  padding: 20px;
+  min-height: 35vh;
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: lighten($color: #141414, $amount: 4%);
+}

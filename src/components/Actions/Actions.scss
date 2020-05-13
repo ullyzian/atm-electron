@@ -1,0 +1,31 @@
+.withdraw-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.balance {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.history {
+  text-align: center;
+}
+
+.history__record {
+  margin-top: 5px;
+}
+
+.transfer-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gap {
+  margin: 10px 0;
+}
