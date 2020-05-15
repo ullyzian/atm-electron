@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { ButtonGroup } from 'baseui/button-group';
 import { Button } from 'baseui/button';
 
-import WidthStyle from '../Cusomization/WidthStyle';
+import WidthStyle from '../Styles/WidthStyle';
 import './Menu.scss';
 
 export default function Menu() {

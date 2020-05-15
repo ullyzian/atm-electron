@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from 'baseui/input';
-import WidthStyle from '../Cusomization/WidthStyle';
+import WidthStyle from '../Styles/WidthStyle';
 import './Actions.scss';
 
 export default function Transfer() {
