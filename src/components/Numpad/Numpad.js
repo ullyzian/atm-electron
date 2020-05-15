@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { store } from '../../store';
 import { Link, useHistory } from 'react-router-dom';
 import { ButtonGroup } from 'baseui/button-group';
@@ -13,16 +13,8 @@ import './Numpad.scss';
 
 export default function Numpad(props) {
   const history = useHistory();
-  const globalState = useContext(store);
-  const { dispatch, state } = globalState;
+  const { dispatch, state } = useContext(store);
   console.log(state);
-  const [value, setValue] = useState('');
-
-  useEffect(() => {
-    if (state.errors === null) {
-      history.push(state.push);
-    }
-  }, [state.errors, history]);
 
   return (
     <section className="numpad">
@@ -42,7 +34,7 @@ export default function Numpad(props) {
       >
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "1" });
+            dispatch({ type: 'SET_NUMBER', payload: '1' });
           }}
           overrides={ButtonStyle}
         >
@@ -50,7 +42,7 @@ export default function Numpad(props) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "2" });
+            dispatch({ type: 'SET_NUMBER', payload: '2' });
           }}
           overrides={ButtonStyle}
         >
@@ -58,7 +50,7 @@ export default function Numpad(props) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "3" });
+            dispatch({ type: 'SET_NUMBER', payload: '3' });
           }}
           overrides={ButtonStyle}
         >
@@ -66,7 +58,7 @@ export default function Numpad(props) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "4" });
+            dispatch({ type: 'SET_NUMBER', payload: '4' });
           }}
           overrides={ButtonStyle}
         >
@@ -74,7 +66,7 @@ export default function Numpad(props) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "5" });
+            dispatch({ type: 'SET_NUMBER', payload: '5' });
           }}
           overrides={ButtonStyle}
         >
@@ -82,7 +74,7 @@ export default function Numpad(props) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "6" });
+            dispatch({ type: 'SET_NUMBER', payload: '6' });
           }}
           overrides={ButtonStyle}
         >
@@ -90,7 +82,7 @@ export default function Numpad(props) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "7" });
+            dispatch({ type: 'SET_NUMBER', payload: '7' });
           }}
           overrides={ButtonStyle}
         >
@@ -98,7 +90,7 @@ export default function Numpad(props) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "8" });
+            dispatch({ type: 'SET_NUMBER', payload: '8' });
           }}
           overrides={ButtonStyle}
         >
@@ -106,7 +98,7 @@ export default function Numpad(props) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "9" });
+            dispatch({ type: 'SET_NUMBER', payload: '9' });
           }}
           overrides={ButtonStyle}
         >
@@ -115,7 +107,7 @@ export default function Numpad(props) {
         <Button overrides={ButtonStyle} disabled></Button>
         <Button
           onClick={() => {
-            dispatch({ type: 'SET_NUMBER', payload: "0" });
+            dispatch({ type: 'SET_NUMBER', payload: '0' });
           }}
           overrides={ButtonStyle}
         >
@@ -148,7 +140,7 @@ export default function Numpad(props) {
 
         <Button
           onClick={() => {
-            setValue(value.slice(0, -1));
+            dispatch({ type: 'SET_CORRECTION' });
           }}
           overrides={CorrectionButton}
         >
@@ -158,9 +150,10 @@ export default function Numpad(props) {
         <Button
           onClick={() => {
             dispatch({ type: 'SET_LOADING', payload: true });
+            dispatch({ type: 'UPDATE', payload: !state.entered });
             setTimeout(() => {
               dispatch({ type: 'ENTER' });
-            }, 500);
+            }, 1000);
           }}
           overrides={EnterButton}
         >

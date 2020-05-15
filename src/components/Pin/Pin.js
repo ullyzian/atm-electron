@@ -1,21 +1,43 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { store } from '../../store';
 import { PinCode } from 'baseui/pin-code';
 import PinStyle from '../Styles/PinStyle';
+import fetchJSON from '../../utils/fetchJSON';
 import API_BASE_URL from '../../utils/constants';
 
 import './Pin.scss';
 
 export default function Pin() {
   const { dispatch, state } = useContext(store);
+  const history = useHistory();
 
   useEffect(() => {
-    dispatch({ type: 'RESET', payload: ['', '', '', ''] });
-    dispatch({
-      type: 'SET_URLS',
-      payload: { push: '/menu', fetch: `${API_BASE_URL}/pin` },
-    });
-  }, [dispatch]);
+    if (state.firstUpdate) {
+      dispatch({ type: 'RESET', payload: ['', '', '', ''] });
+      dispatch({ type: 'FIRST_UPDATE' });
+    } else {
+      fetchJSON(`${API_BASE_URL}/api/auth/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          card: localStorage.getItem('card'),
+          pin: state.input.reduce((a, b) => a + b, ''),
+        }),
+      }).then((response) => {
+        if (response.token) {
+          dispatch({ type: 'SET_ERROR', payload: null });
+          localStorage.setItem('token', response.token);
+          history.push('/menu');
+        } else {
+          dispatch({ type: 'SET_ERROR', payload: response.detail });
+        }
+      });
+    }
+  }, [state.entered]);
 
   return (
     <div className="pin-page">
@@ -27,6 +49,7 @@ export default function Pin() {
         }}
         overrides={PinStyle}
       />
+      <div className="error">{state.errors}</div>
     </div>
   );
 }

@@ -1,17 +1,25 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { store } from '../../store';
 import { Select } from 'baseui/select';
 import './Enter.scss';
 
 export default function Enter() {
   const { dispatch, state } = useContext(store);
+  const history = useHistory();
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_URLS',
-      payload: { push: '/pin', fetch: null },
-    });
-  }, [dispatch]);
+    if (state.firstUpdate) {
+      dispatch({ type: 'FIRST_UPDATE' });
+    } else {
+      if (Object.keys(state.input).length === 0) {
+        dispatch({ type: 'SET_ERROR', payload: "Card doesn't selected" });
+      } else {
+        localStorage.setItem('card', state.input.id);
+        history.push('/pin');
+      }
+    }
+  }, [state.entered]);
 
   return (
     <div className="start-page">
@@ -23,7 +31,6 @@ export default function Enter() {
             { label: '0000 0000 0000 0000', id: '0000000000000000' },
             { label: '1234 1234 1234 1234', id: '1234123412341234' },
           ]}
-          error={state.errors === null ? false : true}
           clearable={false}
           value={!state.input ? [{}] : [state.input]}
           searchable={false}
@@ -32,6 +39,7 @@ export default function Enter() {
             dispatch({ type: 'SET_CARD', payload: params.value })
           }
         />
+        <div className="error">{state.errors}</div>
       </div>
     </div>
   );
