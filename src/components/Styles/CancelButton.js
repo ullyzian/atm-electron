@@ -1,10 +1,10 @@
 const CancelStyle = {
   BaseButton: {
-    style: ({ $theme }) => {
+    style: () => {
       return {
-        width: '120px',
-        height: '60px',
-        backgroundColor: '#d83229',
+        width: "120px",
+        height: "60px",
+        backgroundColor: "#d83229",
       };
     },
   },

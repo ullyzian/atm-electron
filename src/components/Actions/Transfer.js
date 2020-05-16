@@ -1,11 +1,12 @@
-import React from 'react';
-import { Input } from 'baseui/input';
-import WidthStyle from '../Styles/WidthStyle';
-import './Actions.scss';
+import React from "react";
+import { Input } from "baseui/input";
+
+import WidthStyle from "../Styles/WidthStyle";
+import "./Actions.scss";
 
 export default function Transfer() {
-  const [number, setNumber] = React.useState('');
-  const [amount, setAmount] = React.useState('');
+  const [number, setNumber] = React.useState("");
+  const [amount, setAmount] = React.useState("");
   return (
     <div className="transfer-page">
       <div className="title">Enter account number</div>

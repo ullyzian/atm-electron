@@ -1,10 +1,9 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { ButtonGroup } from 'baseui/button-group';
-import { Button } from 'baseui/button';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { ButtonGroup } from "baseui/button-group";
+import { Button } from "baseui/button";
 
-import WidthStyle from '../Styles/WidthStyle';
-import './Menu.scss';
+import WidthStyle from "../Styles/WidthStyle";
 
 export default function Menu() {
   const history = useHistory();
@@ -15,11 +14,11 @@ export default function Menu() {
       <ButtonGroup
         overrides={{
           Root: {
-            style: ({ $theme }) => {
+            style: () => {
               return {
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               };
             },
           },
@@ -27,7 +26,7 @@ export default function Menu() {
       >
         <Button
           onClick={() => {
-            history.push('/menu/withdraw');
+            history.push("/menu/withdraw");
           }}
           overrides={WidthStyle}
         >
@@ -35,7 +34,7 @@ export default function Menu() {
         </Button>
         <Button
           onClick={() => {
-            history.push('/menu/balance');
+            history.push("/menu/balance");
           }}
           overrides={WidthStyle}
         >
@@ -43,7 +42,7 @@ export default function Menu() {
         </Button>
         <Button
           onClick={() => {
-            history.push('/menu/history');
+            history.push("/menu/history");
           }}
           overrides={WidthStyle}
         >
@@ -51,7 +50,7 @@ export default function Menu() {
         </Button>
         <Button
           onClick={() => {
-            history.push('/menu/transfer');
+            history.push("/menu/transfer");
           }}
           overrides={WidthStyle}
         >

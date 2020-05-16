@@ -1,13 +1,12 @@
-
 const PinStyle = {
   Root: {
-    style: ({ $theme }) => {
+    style: () => {
       return {
-        justifyContent: 'center',
-        margin: '10px',
+        justifyContent: "center",
+        margin: "10px",
       };
     },
   },
 };
 
-export default PinStyle
+export default PinStyle;

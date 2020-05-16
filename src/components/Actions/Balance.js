@@ -1,5 +1,6 @@
-import React from 'react';
-import './Actions.scss';
+import React from "react";
+
+import "./Actions.scss";
 
 export default function Balance() {
   return (

@@ -1,19 +1,19 @@
 const WidthStyle = {
   BaseButton: {
-    style: ({ $theme }) => {
+    style: () => {
       return {
-        marginTop: '10px',
-        width: '70%',
-        maxWidth: '400px',
+        marginTop: "10px",
+        width: "70%",
+        maxWidth: "400px",
       };
     },
   },
   Root: {
-    style: ({ $theme }) => {
+    style: () => {
       return {
-        marginTop: '10px',
-        width: '70%',
-        maxWidth: '400px',
+        marginTop: "10px",
+        width: "70%",
+        maxWidth: "400px",
       };
     },
   },

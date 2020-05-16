@@ -1,10 +1,10 @@
 const Correction = {
   BaseButton: {
-    style: ({ $theme }) => {
+    style: () => {
       return {
-        width: '120px',
-        height: '60px',
-        backgroundColor: '#edbc40',
+        width: "120px",
+        height: "60px",
+        backgroundColor: "#edbc40",
       };
     },
   },

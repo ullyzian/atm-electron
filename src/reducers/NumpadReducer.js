@@ -1,67 +1,54 @@
-import pinLenCheck from '../utils/pinLenCheck';
-import pinCorrection from '../utils/pinCorrection';
+import pinLengthParse from "../utils/pinLengthParse";
+import pinCorrection from "../utils/pinCorrection";
 
 const NumpadReducer = (state, action) => {
   switch (action.type) {
-    case 'ENTER':
+    case "ENTER":
       if (state.errors !== null) {
-        return {
-          ...state,
-          loading: false,
-        };
+        return { ...state, loading: false };
       } else {
-        return {
-          ...state,
-          errors: null,
-          loading: false,
-        };
+        return { ...state, errors: null, loading: false };
       }
-    case 'RESET':
+    case "RESET":
       return {
+        firstUpdate: true,
         input: action.payload,
-        errors: '',
+        errors: "",
         loading: false,
         entered: false,
-        firstUpdate: true,
       };
-    case 'UPDATE':
+
+    case "UPDATE":
       return { ...state, entered: !state.entered };
-    case 'FIRST_UPDATE':
+
+    case "FIRST_UPDATE":
       return { ...state, firstUpdate: false };
-    case 'SET_CARD':
+
+    case "SET_CARD":
       return { ...state, input: action.payload[0] };
-    case 'SET_ERROR':
+
+    case "SET_ERROR":
       return { ...state, errors: action.payload };
-    case 'SET_LOADING':
-      return {
-        ...state,
-        loading: action.payload,
-      };
-    case 'SET_PIN':
-      return {
-        ...state,
-        input: action.payload,
-      };
-    case 'SET_CORRECTION':
+
+    case "SET_LOADING":
+      return { ...state, loading: action.payload };
+
+    case "SET_PIN":
+      return { ...state, input: action.payload };
+
+    case "SET_CORRECTION":
       if (Array.isArray(state.input)) {
-        return {
-          ...state,
-          input: pinCorrection(state.input),
-        };
+        return { ...state, input: pinCorrection(state.input) };
       }
-      break;
-    case 'SET_NUMBER':
+      return { ...state };
+
+    case "SET_NUMBER":
       if (Array.isArray(state.input)) {
-        return {
-          ...state,
-          input: pinLenCheck(state.input, action.payload),
-        };
+        return { ...state, input: pinLengthParse(state.input, action.payload) };
       } else {
-        return {
-          ...state,
-          number: action.payload,
-        };
+        return { ...state, number: action.payload };
       }
+
     default:
       throw new Error();
   }

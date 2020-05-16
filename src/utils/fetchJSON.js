@@ -1,4 +1,4 @@
-const fetchJSON = async (url, { method = 'get', body, headers, ...rest }) => {
+const fetchJSON = async (url, { method = "GET", body, headers, ...rest }) => {
   const response = await fetch(url, {
     method,
     body: body,
