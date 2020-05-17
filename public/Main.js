@@ -6,7 +6,7 @@ const url = require("url");
 const startUrl =
   process.env.ELECTRON_START_URL ||
   url.format({
-    pathname: path.join(__dirname, "/../build/index.html"),
+    pathname: path.join(__dirname, "../build/index.html"),
     protocol: "file:",
     slashes: true,
   });
@@ -25,9 +25,6 @@ function createWindow() {
 
   // and load the index.html or url of the app.
   mainWindow.loadURL(startUrl);
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
