@@ -22,7 +22,7 @@ export default function Enter() {
         history.push("/pin");
       }
     }
-  }, [state.entered]);
+  }, []);
 
   return (
     <div className="start-page">

@@ -14,6 +14,7 @@ export default function Pin() {
 
   useEffect(() => {
     if (state.firstUpdate) {
+      dispatch({ type: "RESET", payload: ["", "", "", ""] });
       dispatch({ type: "FIRST_UPDATE" });
     } else {
       fetchJSON(`${API_BASE_URL}/api/auth/`, {
@@ -28,15 +29,14 @@ export default function Pin() {
         }),
       }).then((response) => {
         if (response.token) {
-          dispatch({ type: "SET_ERROR", payload: null });
           localStorage.setItem("token", `Token ${response.token}`);
           history.push("/menu");
-        } else {
+        } else if (response.detail) {
           dispatch({ type: "SET_ERROR", payload: response.detail });
         }
       });
     }
-  }, [state.entered]);
+  }, []);
 
   return (
     <div className="pin-page">

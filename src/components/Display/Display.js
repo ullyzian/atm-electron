@@ -10,6 +10,7 @@ import Balance from "../Actions/Balance";
 import History from "../Actions/History";
 import Transfer from "../Actions/Transfer";
 import End from "../End/End";
+import Completed from "../Completed/Completed";
 import ThreeDots from "../Styles/ThreeDots";
 
 import "./Display.scss";
@@ -30,6 +31,7 @@ export default function Display() {
           <Route exact path="/menu/history" component={History} />
           <Route exact path="/menu/transfer" component={Transfer} />
           <Route exact path="/cancel" component={End} />
+          <Route exact path="/completed" component={Completed} />
         </Switch>
       )}
     </section>

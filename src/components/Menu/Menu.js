@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { ButtonGroup } from "baseui/button-group";
 import { Button } from "baseui/button";
 
+import { store } from "../../store";
+
 import WidthStyle from "../Styles/WidthStyle";
 
 export default function Menu() {
+  const { dispatch } = useContext(store);
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch({ type: "RESET", payload: {} });
+  }, []);
 
   return (
     <div className="menu-page">
@@ -26,7 +33,11 @@ export default function Menu() {
       >
         <Button
           onClick={() => {
-            history.push("/menu/withdraw");
+            dispatch({ type: "SET_LOADING", payload: true });
+            setTimeout(() => {
+              history.push("/menu/withdraw");
+              dispatch({ type: "SET_LOADING", payload: false });
+            }, 1000);
           }}
           overrides={WidthStyle}
         >
@@ -34,7 +45,11 @@ export default function Menu() {
         </Button>
         <Button
           onClick={() => {
-            history.push("/menu/balance");
+            dispatch({ type: "SET_LOADING", payload: true });
+            setTimeout(() => {
+              history.push("/menu/balance");
+              dispatch({ type: "SET_LOADING", payload: false });
+            }, 1000);
           }}
           overrides={WidthStyle}
         >
@@ -42,7 +57,11 @@ export default function Menu() {
         </Button>
         <Button
           onClick={() => {
-            history.push("/menu/history");
+            dispatch({ type: "SET_LOADING", payload: true });
+            setTimeout(() => {
+              history.push("/menu/history");
+              dispatch({ type: "SET_LOADING", payload: false });
+            }, 1000);
           }}
           overrides={WidthStyle}
         >
@@ -50,7 +69,11 @@ export default function Menu() {
         </Button>
         <Button
           onClick={() => {
-            history.push("/menu/transfer");
+            dispatch({ type: "SET_LOADING", payload: true });
+            setTimeout(() => {
+              history.push("/menu/transfer");
+              dispatch({ type: "SET_LOADING", payload: false });
+            }, 1000);
           }}
           overrides={WidthStyle}
         >

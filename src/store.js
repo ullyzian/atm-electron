@@ -5,7 +5,6 @@ const initialState = {
   input: {},
   errors: '',
   loading: false,
-  entered: false,
   firstUpdate: true
 };
 const store = createContext(initialState);

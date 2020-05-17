@@ -150,7 +150,6 @@ export default function Numpad() {
         <Button
           onClick={() => {
             dispatch({ type: "SET_LOADING", payload: true });
-            dispatch({ type: "UPDATE", payload: !state.entered });
             setTimeout(() => {
               dispatch({ type: "ENTER" });
             }, 1000);
