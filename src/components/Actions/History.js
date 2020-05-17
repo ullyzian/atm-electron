@@ -17,17 +17,21 @@ export default function History() {
       setHistory(response);
     });
   }, []);
-  console.log(history);
-  const transactions = history.map((transaction) => {
-    return (
-      <div className="history__record">
-        {transaction.kind}: -{transaction.amount} zł{" "}
-        {transaction.receiver === null ? null : (
-          <span>to account {transaction.receiver.account}</span>
-        )}
-      </div>
+  const transactions =
+    history.length === 0 ? (
+      <div>There is no such transaction</div>
+    ) : (
+      history.map((transaction) => {
+        return (
+          <div className="history__record">
+            {transaction.kind}: -{transaction.amount} zł{" "}
+            {transaction.receiver === null ? null : (
+              <span>to account {transaction.receiver.account}</span>
+            )}
+          </div>
+        );
+      })
     );
-  });
   return (
     <div className="history-page">
       <div className="title">Your history</div>

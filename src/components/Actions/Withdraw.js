@@ -43,7 +43,14 @@ export default function Withdraw() {
       <div className="title">Enter withdraw amount</div>
       <Input
         value={state.input.amount}
-        onChange={(e) => dispatch({ type: "SET_INPUT", payload: { amount: e.target.value } })}
+        onChange={(e) =>
+          dispatch({
+            type: "SET_AMOUNT",
+            payload: {
+              amount: e.target.value,
+            },
+          })
+        }
         placeholder="Amount"
         type="number"
         overrides={WidthStyle}

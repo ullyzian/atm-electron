@@ -27,7 +27,7 @@ export default function Transfer() {
       }).then((response) => {
         dispatch({
           type: "SET_INPUT",
-          payload: { accounts: response, amount: state.input.amount, account: state.input.account },
+          payload: { accounts: response },
         });
       });
     } else if (!state.input.account) {
@@ -69,20 +69,20 @@ export default function Transfer() {
       <div className="gap" />
       <div className="title">Enter amount</div>
       <Input
-        value={state.amount}
+        value={state.input.amount}
         onChange={(e) =>
           dispatch({
-            type: "SET_INPUT",
+            type: "SET_AMOUNT",
             payload: {
               amount: e.target.value,
-              account: state.input.account,
-              accounts: state.input.accounts,
             },
           })
         }
         placeholder="Amount"
         type="number"
         overrides={WidthStyle}
+        min="1"
+        max="1000"
       />
       <div className="error">{state.errors}</div>
     </div>

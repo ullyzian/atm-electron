@@ -36,27 +36,40 @@ const NumpadReducer = (state, action) => {
       return { ...state, input: action.payload };
 
     case "SET_INPUT":
-      return { ...state, input: action.payload };
+      return {
+        ...state,
+        input: { ...state.input, accounts: action.payload.accounts },
+      };
+    case "SET_AMOUNT":
+      return {
+        ...state,
+        input: {
+          ...state.input,
+          amount: action.payload.amount,
+        },
+      };
     case "SET_ACCOUNT_SELECT":
       return {
         ...state,
         input: {
-          accounts: action.payload.accounts,
-          amount: action.payload.amount,
+          ...state.input,
           account: action.payload[0],
         },
       };
     case "SET_CORRECTION":
-      if (Array.isArray(state.input)) {
+      if (state.input.amount) {
+        return { ...state, input: { ...state.input, amount: state.input.amount.slice(0, -1) } };
+      } else if (Array.isArray(state.input)) {
         return { ...state, input: pinCorrection(state.input) };
+      } else {
+        return { ...state };
       }
-      return { ...state };
 
     case "SET_NUMBER":
       if (Array.isArray(state.input)) {
         return { ...state, input: pinLengthParse(state.input, action.payload) };
       } else if (state.input.amount) {
-        return { ...state, input: { amount: state.input.amount + action.payload } };
+        return { ...state, input: {...state.input, amount: state.input.amount + action.payload } };
       } else {
         return { ...state, number: action.payload };
       }

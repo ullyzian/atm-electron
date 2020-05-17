@@ -16,6 +16,7 @@ export default function Balance() {
         Accept: "application/json",
       },
     }).then((response) => {
+        console.log(response);
       setBalance(response.balance);
     });
   });

@@ -33,6 +33,7 @@ export default function Enter() {
             { label: "4321 4321 4321 4321", id: "4321432143214321" },
             { label: "0000 0000 0000 0000", id: "0000000000000000" },
             { label: "1234 1234 1234 1234", id: "1234123412341234" },
+            { label: "3333 3333 3333 3333", id: "3333333333333333" },
           ]}
           clearable={false}
           value={!state.input ? [{}] : [state.input]}

@@ -13,8 +13,7 @@ import "./Numpad.scss";
 
 export default function Numpad() {
   const history = useHistory();
-  const { dispatch, state } = useContext(store);
-  console.log(state);
+  const { dispatch } = useContext(store);
 
   return (
     <section className="numpad">
