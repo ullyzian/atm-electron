@@ -18,18 +18,41 @@ Credit card:
 Use case:
 ![alt useCase](assets/diagrams/useCase.png)
 
+---
+
 Database tables:
 ![alt classDiagram](assets/diagrams/classDiagram.png)
+
+---
 
 Activity diagram:
 ![alt activityDiagram](assets/diagrams/activityDiagram.png)
 
+---
+
 ## Database queries
 
+User model
 ![alt query](assets/queries/user.png)
+
+---
+
+Customer model
 ![alt query](assets/queries/customer.png)
+
+---
+
+Bank account model
 ![alt query](assets/queries/bankaccount.png)
+
+---
+
+Credit card model
 ![alt query](assets/queries/creditcard.png)
+
+---
+
+Operations model
 ![alt query](assets/queries/operations.png)
 
 ## Screenshots of tests
@@ -42,6 +65,8 @@ Activity diagram:
 Errors
 ![alt img](assets/screenshots/2.png)
 
+---
+
 ### Pin screen
 
 ![alt img](assets/screenshots/4.png)
@@ -49,9 +74,13 @@ Errors
 Errors
 ![alt img](assets/screenshots/5.png)
 
+---
+
 ### Menu
 
 ![alt img](assets/screenshots/6.png)
+
+---
 
 ### Withdraw
 
@@ -61,19 +90,27 @@ Errors
 ![alt img](assets/screenshots/8.png)
 ![alt img](assets/screenshots/9.png)
 
+---
+
 ### Balance
 
 ![alt img](assets/screenshots/11.png)
 
+---
+
 ### History
 
 ![alt img](assets/screenshots/12.png)
+
+---
 
 ### Transfer
 
 Errors
 ![alt img](assets/screenshots/13.png)
 ![alt img](assets/screenshots/14.png)
+
+---
 
 ### Other
 
