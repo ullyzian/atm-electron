@@ -1,6 +1,11 @@
 {
   "name": "ATM",
-  "version": "0.1.3",
+  "version": "1.0.0",
+  "description": "ATM simulation app powered by Electron and React",
+  "author": {
+    "name": "Viktor Ashcheulov",
+    "email": "ullyzian@gmail.com"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -53,14 +58,8 @@
       "build/**/*",
       "node_modules/**/*"
     ],
-    "mac": {
-      "icon": "./public/icon.png"
-    },
-    "win": {
-      "icon": "./public//icon.png"
-    },
     "directories": {
-      "buildResources": "assets"
+      "buildResources": "build/assets"
     }
   }
 }
