@@ -17,7 +17,7 @@ export default function Transfer() {
 
   useEffect(() => {
     if (state.firstUpdate) {
-      dispatch({ type: "RESET", payload: { amount: "1", account: {} } });
+      dispatch({ type: "RESET", payload: { amount: "", account: {} } });
       dispatch({ type: "FIRST_UPDATE" });
       fetchJSON(`${API_BASE_URL}/api/accounts/`, {
         method: "GET",
@@ -69,7 +69,6 @@ export default function Transfer() {
         onChange={(params) => dispatch({ type: "SET_ACCOUNT_SELECT", payload: params.value })}
         overrides={WidthStyle}
       />
-      <div className="gap" />
       <div className="title">Enter amount</div>
       <Input
         value={state.input.amount}
@@ -82,7 +81,7 @@ export default function Transfer() {
           })
         }
         placeholder="Amount"
-        type="number"
+        disabled
         overrides={WidthStyle}
         min="1"
         max="1000"

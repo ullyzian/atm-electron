@@ -66,10 +66,10 @@ const NumpadReducer = (state, action) => {
       }
 
     case "SET_NUMBER":
-      if (Array.isArray(state.input)) {
+      if (state.input.amount !== undefined) {
+        return { ...state, input: { ...state.input, amount: state.input.amount + action.payload } };
+      } else if (Array.isArray(state.input)) {
         return { ...state, input: pinLengthParse(state.input, action.payload) };
-      } else if (state.input.amount) {
-        return { ...state, input: {...state.input, amount: state.input.amount + action.payload } };
       } else {
         return { ...state, number: action.payload };
       }

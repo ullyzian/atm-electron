@@ -17,7 +17,7 @@ export default function Withdraw() {
 
   useEffect(() => {
     if (state.firstUpdate) {
-      dispatch({ type: "RESET", payload: { amount: "1" } });
+      dispatch({ type: "RESET", payload: { amount: "" } });
       dispatch({ type: "FIRST_UPDATE" });
     } else {
       fetchJSON(`${API_BASE_URL}/api/cards/${localStorage.getItem("card")}/withdraw/`, {
@@ -54,8 +54,8 @@ export default function Withdraw() {
           })
         }
         placeholder="Amount"
-        type="number"
         overrides={WidthStyle}
+        disabled
         min="1"
         max="1000"
       />

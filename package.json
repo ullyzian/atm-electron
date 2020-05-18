@@ -1,6 +1,6 @@
 {
   "name": "ATM",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ATM simulation app powered by Electron and React",
   "author": {
     "name": "Viktor Ashcheulov",

@@ -13,9 +13,9 @@ Credit card:
 ## Diagrams
 
 Use case:
-![alt useCase](img/useCase.jpg)
+![alt useCase](assets/img/useCase.jpg)
 
 Tables fields:
-![alt classDiagram](img/classDiagram.jpg)
+![alt classDiagram](assets/img/classDiagram.jpg)
 
 ## Screenshots of tests
