@@ -20,10 +20,11 @@ export default function Display() {
   return (
     <section className="display">
       {state.loading ? (
-        <ThreeDots color={"#ffffff"} height={64} width={64} />
+        <div className="dots">
+          <ThreeDots color={"#ffffff"} height={64} width={64} />
+        </div>
       ) : (
         <Switch>
-          <Route exact path="/" component={Start} />
           <Route exact path="/pin" component={Pin} />
           <Route exact path="/menu" component={Menu} />
           <Route exact path="/menu/withdraw" component={WithDraw} />
@@ -32,6 +33,7 @@ export default function Display() {
           <Route exact path="/menu/transfer" component={Transfer} />
           <Route exact path="/cancel" component={End} />
           <Route exact path="/completed" component={Completed} />
+          <Route path="/" component={Start} />
         </Switch>
       )}
     </section>

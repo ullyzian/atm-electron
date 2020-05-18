@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import fetchJSON from "../../utils/fetchJSON";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import API_BASE_URL from "../../utils/constants";
+import { Button } from "baseui/button";
+import ReturnButton from "../Styles/ReturnButton";
 
 export default function History() {
   const [history, setHistory] = useState([]);
+  const hist = useHistory();
+  console.log(history);
+
   useEffect(() => {
     fetchJSON(`${API_BASE_URL}/api/cards/${localStorage.getItem("card")}/history/`, {
       method: "GET",
@@ -17,29 +22,37 @@ export default function History() {
       setHistory(response);
     });
   }, []);
+
   const transactions =
     history.length === 0 ? (
       <div>There is no such transaction</div>
     ) : (
       history.map((transaction) => {
         return (
-          <div className="history__record">
-            {transaction.kind}: -{transaction.amount} zł{" "}
-            {transaction.receiver === null ? null : (
-              <span>to account {transaction.receiver.account}</span>
+          <div key={transaction.id} className="history__record">
+            [{transaction.kind}: <span className="history-amount">{transaction.amount} zł</span>{" "}
+            {transaction.receiver === null ? (
+              <span>
+                from card <span className="credentials-info">{localStorage.getItem("card")}</span>
+              </span>
+            ) : (
+              <span>
+                to account <span className="credentials-info">{transaction.receiver.account}</span>
+              </span>
             )}
+            ]
           </div>
         );
       })
     );
   return (
-    <div className="history-page">
+    <div className="history-page page">
       <div className="title">Your history</div>
       <div className="history">{transactions}</div>
       <div className="gap" />
-      <Link className="link" to="/menu">
-        Return to menu?
-      </Link>
+      <Button onClick={() => hist.push("/menu")} overrides={ReturnButton}>
+        Return to menu
+      </Button>
     </div>
   );
 }

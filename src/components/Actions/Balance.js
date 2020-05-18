@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "baseui/button";
 import fetchJSON from "../../utils/fetchJSON";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import API_BASE_URL from "../../utils/constants";
 
+import ReturnButton from '../Styles/ReturnButton'
 import "./Actions.scss";
 
 export default function Balance() {
   const [balance, setBalance] = useState(0);
+  const history = useHistory();
+
   useEffect(() => {
     fetchJSON(`${API_BASE_URL}/api/cards/${localStorage.getItem("card")}/balance/`, {
       method: "GET",
@@ -15,19 +19,18 @@ export default function Balance() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    }).then((response) => {
-        console.log(response);
-      setBalance(response.balance);
+    }).then((data) => {
+      setBalance(data.balance);
     });
-  });
+  }, []);
   return (
-    <div className="balance-page">
+    <div className="balance-page page">
       <div className="title">Your balance</div>
       <div className="balance">{balance} zł</div>
-      <div className='gap' />
-      <Link className="link" to="/menu">
-        Return to menu?
-      </Link>
+      <div className="gap" />
+      <Button onClick={() => history.push("/menu")} overrides={ReturnButton}>
+        Return to menu
+      </Button>
     </div>
   );
 }

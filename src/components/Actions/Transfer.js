@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import fetchJSON from "../../utils/fetchJSON";
 import { useHistory } from "react-router-dom";
 import { store } from "../../store";
 import API_BASE_URL from "../../utils/constants";
 import { Input } from "baseui/input";
 import { Select } from "baseui/select";
+import { Button } from "baseui/button";
+import ReturnButton from "../Styles/ReturnButton";
 
 import WidthStyle from "../Styles/WidthStyle";
 import "./Actions.scss";
@@ -42,7 +44,7 @@ export default function Transfer() {
         },
         body: JSON.stringify({
           amount: state.input.amount,
-          receiver: state.input.account.id,
+          receiver: !state.input.account.id ? "" : state.input.account.id,
         }),
       }).then((response) => {
         if (response.message) {
@@ -54,8 +56,9 @@ export default function Transfer() {
       });
     }
   }, []);
+
   return (
-    <div className="transfer-page">
+    <div className="transfer-page page">
       <div className="title">Enter account number</div>
       <Select
         options={state.input.accounts}
@@ -85,6 +88,9 @@ export default function Transfer() {
         max="1000"
       />
       <div className="error">{state.errors}</div>
+      <Button onClick={() => history.push("/menu")} overrides={ReturnButton}>
+        Return to menu
+      </Button>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Input } from "baseui/input";
+import { Button } from "baseui/button";
+import ReturnButton from "../Styles/ReturnButton";
 
 import fetchJSON from "../../utils/fetchJSON";
 import API_BASE_URL from "../../utils/constants";
@@ -39,7 +41,7 @@ export default function Withdraw() {
     }
   }, []);
   return (
-    <div className="withdraw-page">
+    <div className="withdraw-page page">
       <div className="title">Enter withdraw amount</div>
       <Input
         value={state.input.amount}
@@ -58,6 +60,9 @@ export default function Withdraw() {
         max="1000"
       />
       <div className="error">{state.errors}</div>
+      <Button onClick={() => history.push("/menu")} overrides={ReturnButton}>
+        Return to menu
+      </Button>
     </div>
   );
 }

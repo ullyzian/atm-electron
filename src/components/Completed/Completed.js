@@ -1,15 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Button } from "baseui/button";
+import ReturnButton from "../Styles/ReturnButton";
 
 import "./Completed.scss";
 
 const Completed = () => {
+  const history = useHistory();
   return (
-    <div className="completed-page">
+    <div className="completed-page page">
       <div className="completed">Operation successfully completed!</div>
-      <Link className="link" to="/menu">
-        Return to menu?
-      </Link>
+      <Button onClick={() => history.push("/menu")} overrides={ReturnButton}>
+        Return to menu
+      </Button>
     </div>
   );
 };

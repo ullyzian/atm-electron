@@ -2,6 +2,7 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
+const iconPath = path.join(__dirname, "public", "icon.png");
 
 const startUrl =
   process.env.ELECTRON_START_URL ||
@@ -18,6 +19,8 @@ function createWindow() {
     height: 675,
     minWidth: 900,
     minHeight: 675,
+    show: false,
+    icon: iconPath,
     webPreferences: {
       // preload: path.join(__dirname, 'preload.js'),
     },

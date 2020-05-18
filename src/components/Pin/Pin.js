@@ -33,6 +33,7 @@ export default function Pin() {
           history.push("/menu");
         } else if (response.detail) {
           dispatch({ type: "SET_ERROR", payload: response.detail });
+          dispatch({ type: "SET_PIN", payload: ["", "", "", ""] });
         }
       });
     }

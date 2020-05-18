@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Button } from "baseui/button";
+import ReturnButton from "../Styles/ReturnButton";
 
 import { store } from "../../store";
 
@@ -7,6 +9,7 @@ import "./End.scss";
 
 const End = () => {
   const { dispatch } = useContext(store);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch({ type: "RESET", payload: {} });
@@ -14,11 +17,11 @@ const End = () => {
     localStorage.removeItem("token");
   }, [dispatch]);
   return (
-    <div className="cancel-page">
+    <div className="cancel-page page">
       <div className="cancel">Operation canceled!</div>
-      <Link className="link" to="/">
-        Return to start page?
-      </Link>
+      <Button onClick={() => history.push("/")} overrides={ReturnButton}>
+        Return to menu
+      </Button>
     </div>
   );
 };

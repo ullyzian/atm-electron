@@ -6,17 +6,31 @@
 }
 
 .balance {
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .history {
   text-align: center;
 }
 
+.history-amount {
+  color: lightgreen;
+}
+
+.credentials-info {
+  color: lightgoldenrodyellow;
+}
+
 .history__record {
-  margin-top: 5px;
+  margin-top: 7px;
   font-size: 1.2rem;
 }
 
@@ -30,4 +44,3 @@
 .gap {
   margin: 10px 0;
 }
-
